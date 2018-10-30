@@ -1,4 +1,5 @@
 Spaceship ship = new Spaceship();
+Asteroid bob = new Asteroid();
 Star[] galaxy = new Star[100];
 public void setup() 
 {
@@ -16,8 +17,9 @@ public void draw()
   	stroke(255);
   	galaxy[i].show();
   }
-  ship.move();
-  ship.show();
+/*  ship.move();
+  ship.show();*/
+  bob.show();
 
 }
 public void keyPressed() {
