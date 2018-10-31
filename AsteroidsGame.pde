@@ -19,6 +19,7 @@ public void draw()
   }
 /*  ship.move();
   ship.show();*/
+  bob.move();
   bob.show();
 
 }
