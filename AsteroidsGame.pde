@@ -1,5 +1,5 @@
 Spaceship ship = new Spaceship();
-Asteroid bob = new Asteroid();
+Asteroid[] field = new Asteroid[5];
 Star[] galaxy = new Star[100];
 public void setup() 
 {
@@ -7,6 +7,10 @@ public void setup()
   size(500, 500);
   for(int i = 0; i < galaxy.length; i++) {
   	galaxy[i] = new Star();
+  }
+  for(int i = 0; i < field.length; i++) {
+  	field[i] = new Asteroid();
+  	field[i].setRatio(4);
   }
 }
 public void draw() 
@@ -17,10 +21,13 @@ public void draw()
   	stroke(255);
   	galaxy[i].show();
   }
-/*  ship.move();
-  ship.show();*/
-  bob.move();
-  bob.show();
+  for(int i = 0; i < field.length; i++) {
+	  field[i].move();
+	  field[i].show();
+  }
+  ship.move();
+  ship.show();
+
 
 }
 public void keyPressed() {
