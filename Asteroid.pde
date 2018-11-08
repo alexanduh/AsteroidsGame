@@ -37,7 +37,7 @@ class Asteroid extends Floater {
 
 	public void move (){
 		super.move();
-		this.turn(spin);   
+		turn(spin);   
 	}
 
 	public void setRatio(int ratio) {

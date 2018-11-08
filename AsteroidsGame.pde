@@ -15,18 +15,21 @@ public void setup()
 }
 public void draw() 
 {
-  background(0);
-  for (int i = 0; i < galaxy.length; i++) {
-    fill(255);
-    stroke(255);
-    galaxy[i].show();
-  }
-  for (int i = 0; i < field.size(); i++) {
-    field.get(i).move();
-    field.get(i).show();
-  }
-  ship.move();
-  ship.show();
+	background(0);
+	for (int i = 0; i < galaxy.length; i++) {
+		fill(255);
+		stroke(255);
+		galaxy[i].show();
+	}
+	for (int i = 0; i < field.size(); i++) {
+		field.get(i).move();
+		field.get(i).show();
+		if(dist(field.get(i).getX(), field.get(i).getY(), ship.getX(), ship.getY()) <= 30) {
+		field.remove(i);
+		}
+	}
+	ship.move();
+	ship.show();
 }
 public void keyPressed() {
   if (key == CODED) {
