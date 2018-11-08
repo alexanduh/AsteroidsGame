@@ -25,7 +25,7 @@ public void draw()
 		field.get(i).move();
 		field.get(i).show();
 		if(dist(field.get(i).getX(), field.get(i).getY(), ship.getX(), ship.getY()) <= 30) {
-		field.remove(i);
+			field.remove(i);
 		}
 	}
 	ship.move();
@@ -35,6 +35,9 @@ public void keyPressed() {
   if (key == CODED) {
     if (keyCode == UP) {
       ship.accelerate(0.3);
+    }
+    if(keyCode == DOWN) {
+    	ship.accelerate(-0.3);
     }
     if (keyCode == LEFT) {
       ship.turn(-20);
