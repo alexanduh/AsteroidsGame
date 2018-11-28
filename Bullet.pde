@@ -1,35 +1,26 @@
-// class Bullet extends Floater {
-// 	public Bullet() {
-//     	corners = 6;
-//     	xCorners = new int[corners];
-//     	yCorners = new int[corners];
-//     	xCorners[0] = -6;
-//     	yCorners[0] = 3;
-//     	xCorners[1] = 0;
-//     	yCorners[1] = 3;
-//     	xCorners[2] = 6;
-//     	yCorners[2] = 6;
-//     	xCorners[3] = 6;
-//     	yCorners[3] = -6;
-//     	xCorners[4] = 0;
-//     	yCorners[4] = -6;
-//     	xCorners[5] = -6;
-//     	yCorners[5] = -3;
-//     	myColor = color(210,210, 210);
-//     	myCenterX = (int)(Math.random()*500);
-//     	myCenterY = (int)(Math.random()*500);
-//     	myDirectionX = Math.random()*2-1;
-//     	myDirectionY = Math.random()*2-1;
-//     	myPointDirection = 
-// 	}
-// 	public void setX(int x) {myCenterX = x;}  
-// 	public int getX() {return (int)myCenterX;}   
-// 	public void setY(int y) {myCenterY = y;}   
-// 	public int getY() {return (int)myCenterY;}   
-// 	public void setDirectionX(double x) {myDirectionX = x;}
-// 	public double getDirectionX() {return myDirectionX;}   
-// 	public void setDirectionY(double y) {myDirectionY = y;}   
-// 	public double getDirectionY() {return myDirectionY;}   
-// 	public void setPointDirection(int degrees) {myPointDirection = degrees;}
-//  	public double getPointDirection() {return myPointDirection;}
-// }
+class Bullet extends Floater {
+	public Bullet(Spaceship ship) {
+    	myColor = color(255,0,0);
+    	myCenterX = ship.getX();
+    	myCenterY = ship.getY();
+    	double dRadians = myPointDirection*(Math.PI/180);
+    	myDirectionX = 5*Math.cos(dRadians) + ship.getDirectionX();
+    	myDirectionY = 5*Math.sin(dRadians) + ship.getDirectionY();
+    	myPointDirection = ship.getPointDirection();
+	}
+	public void show() {
+		fill(myColor);
+		stroke(myColor);
+		ellipse((int)myCenterX,(int)myCenterY, 5, 5);
+	}
+	public void setX(int x) {myCenterX = x;}  
+	public int getX() {return (int)myCenterX;}   
+	public void setY(int y) {myCenterY = y;}   
+	public int getY() {return (int)myCenterY;}   
+	public void setDirectionX(double x) {myDirectionX = x;}
+	public double getDirectionX() {return myDirectionX;}   
+	public void setDirectionY(double y) {myDirectionY = y;}   
+	public double getDirectionY() {return myDirectionY;}   
+	public void setPointDirection(int degrees) {myPointDirection = degrees;}
+ 	public double getPointDirection() {return myPointDirection;}
+}

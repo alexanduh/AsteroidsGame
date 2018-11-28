@@ -1,6 +1,7 @@
 Spaceship ship = new Spaceship();
 ArrayList <Asteroid> field = new ArrayList <Asteroid>();
 Star[] galaxy = new Star[100];
+ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 boolean up,down,left,right;
 public void setup() 
 {
@@ -22,6 +23,9 @@ public void draw()
 		fill(255);
 		stroke(255);
 		galaxy[i].show();
+	}
+	for(Bullet bullet: bullets) {
+		bullet.show();
 	}
 	for (int i = 0; i < field.size(); i++) {
 		field.get(i).move();
@@ -66,6 +70,9 @@ public void keyPressed() {
   }
   if (key == 'x') {
     ship.hyperspace();
+  }
+  if(key == 'f') {
+  	bullets.add(new Bullet(ship));
   }
 }
 
