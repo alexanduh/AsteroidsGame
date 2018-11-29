@@ -6,7 +6,7 @@ boolean up,down,left,right;
 public void setup() 
 {
   background(0);
-  size(500, 500);
+  size(800, 600);
   for (int i = 0; i < galaxy.length; i++) {
     galaxy[i] = new Star();
   }
@@ -24,14 +24,28 @@ public void draw()
 		stroke(255);
 		galaxy[i].show();
 	}
-	for(Bullet bullet: bullets) {
-		bullet.show();
+	for(int i = 0; i < bullets.size(); i++) {
+		bullets.get(i).show();
+		if(bullets.get(i).getTimer() == 0) {
+			bullets.remove(i);
+			i--;
+		} 
+		else {
+			bullets.get(i).move();
+		}
 	}
 	for (int i = 0; i < field.size(); i++) {
 		field.get(i).move();
 		field.get(i).show();
 		if(dist(field.get(i).getX(), field.get(i).getY(), ship.getX(), ship.getY()) <= 30) {
 			field.remove(i);
+		}
+		for(int j = 0; j < bullets.size(); j++) {
+			if(dist(field.get(i).getX(), field.get(i).getY(), bullets.get(j).getX(), bullets.get(j).getY()) <= 30) {
+				bullets.remove(j);
+				field.remove(i);
+				break;	
+			}
 		}
 	}
 	ship.move();
