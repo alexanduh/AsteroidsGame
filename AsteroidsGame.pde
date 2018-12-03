@@ -1,8 +1,10 @@
-Spaceship ship = new Spaceship();
+Spaceship bob = new Spaceship();
 ArrayList <Asteroid> field = new ArrayList <Asteroid>();
 Star[] galaxy = new Star[100];
 ArrayList <Bullet> bullets = new ArrayList <Bullet>();
 boolean up,down,left,right;
+int canvasX = 800; 
+int canvasY = 600;
 public void setup() 
 {
   background(0);
@@ -37,7 +39,7 @@ public void draw()
 	for (int i = 0; i < field.size(); i++) {
 		field.get(i).move();
 		field.get(i).show();
-		if(dist(field.get(i).getX(), field.get(i).getY(), ship.getX(), ship.getY()) <= 30) {
+		if(dist(field.get(i).getX(), field.get(i).getY(), bob.getX(), bob.getY()) <= 30) {
 			field.remove(i);
 		}
 		for(int j = 0; j < bullets.size(); j++) {
@@ -48,22 +50,22 @@ public void draw()
 			}
 		}
 	}
-	ship.move();
-	ship.show();
+	bob.move();
+	bob.show();
 	if(up) {
-		ship.accelerate(0.1); 
+		bob.accelerate(0.1); 
 	}
 
 	if(down) {
-		ship.accelerate(-0.1); 
+		bob.accelerate(-0.1); 
 	}
 
 	if(left) {
-		ship.turn(-5);
+		bob.turn(-5);
 	}
 
 	if(right) {
-		ship.turn(5);
+		bob.turn(5);
 	}
 
 }
@@ -83,10 +85,10 @@ public void keyPressed() {
     }
   }
   if (key == 'x') {
-    ship.hyperspace();
+    bob.hyperspace();
   }
   if(key == 'f') {
-  	bullets.add(new Bullet(ship));
+  	bullets.add(new Bullet(bob));
   }
 }
 
